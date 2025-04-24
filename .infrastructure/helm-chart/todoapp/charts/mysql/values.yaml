@@ -15,9 +15,21 @@ pvc:
   storage: 2Gi
 
 affinity:
-  key: app
-  values:
-  - mysql
+  podAntiAffinity:
+    key: app
+    values:
+    - mysql
+  nodeAffinity:
+    key: app
+    values:
+    - mysql
+
+tolerations:
+  key: "app"
+  operator: "Equal"
+  value: "mysql"
+  effect: "NoSchedule"
+
 
 resources:
   requests:

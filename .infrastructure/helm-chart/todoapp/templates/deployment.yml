@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Chart.Name }}
-  namespace: {{ .Values.namespace.name }}
+  namespace: {{ .Values.namespace.name | default "todoapp" }}
 spec:
   strategy:
     type: RollingUpdate
